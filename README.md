@@ -57,7 +57,4 @@ pip install numpy pandas scikit-learn tensorflow keras matplotlib
 - **Accuracy** is used as the primary metric for model comparison.
 - **Loss** (model error on test data) is also analyzed.
 
-## Authors
-
-This project was developed for experimenting with machine learning methods on the MNIST dataset.
 
