@@ -1,60 +1,68 @@
-# MNIST Classification Project
+# Named Entity Recognition + Image Classification Pipeline
 
-## Project Description
+## Overview
 
-This project implements image classification for the MNIST dataset using three different algorithms:
+This project implements a machine learning pipeline that consists of two models responsible for different tasks:
 
-- **Random Forest**
-- **Feed-Forward Neural Network** (FFNN)
-- **Convolutional Neural Network** (CNN)
+1. **Named Entity Recognition (NER):** Extracts animal names from a given text.
+2. **Image Classification:** Identifies the animal present in an image.
 
-Each classifier is implemented as a separate class following the `MnistClassifierInterface` interface.
+The main goal is to verify whether a given textual description matches the contents of an image.
 
-## File Structure
+## Workflow
 
-- `Task1.ipynb` – Main project file containing code for data loading, preprocessing, model training, and evaluation.
-- `RandomForest.ipynb` – File containing the implementation of the Random Forest model with hyperparameter tuning.
-- `Feed-Forward.ipynb` – File with the implementation of a fully connected neural network (FFNN) using Keras.
-- `cnn.ipynb` – File with the implementation of a Convolutional Neural Network (CNN) for MNIST classification.
+1. The user provides a text input, e.g., *"There is a cow in the picture."*
+2. The user uploads an image containing an animal.
+3. The pipeline processes the text using the NER model to extract the animal entity.
+4. The image classification model predicts the animal category in the image.
+5. The system compares the extracted entity with the classified image result and returns a boolean value indicating whether they match.
 
-## Installation and Execution
+## Components
 
-### Required Libraries
+- **Dataset:**
+  - The image dataset contains at least 10 animal classes.
+  - The NER model was trained using a dataset containing sentences with animal references.
+- **NER Model:** Transformer-based model (e.g., Bert) trained to recognize animal names in text.
+- **Image Classification Model:** CNN-based model trained to classify animals.
+- **Pipeline Script:** A script that integrates both models and provides the final validation output.
 
-Before running the project, make sure you have all the necessary libraries installed. You can install them using:
+## Installation & Setup
 
-```bash
-pip install numpy pandas scikit-learn tensorflow keras matplotlib
-```
+### Prerequisites
 
-### Running the Project
+- Python 3.8+
+- Required libraries (install using `pip`):
+  ```sh
+  pip install torch torchvision transformers tensorflow datasets numpy pillow
+  ```
 
-1. Open `Task1.ipynb` in Jupyter Notebook.
-2. Run all cells to load the dataset, train the models, and evaluate their performance.
-3. Classification results will be displayed as accuracy and loss values.
+### Running the Pipeline
 
-## Methods Used
+The trained models are large and cannot be uploaded to GitHub. To use the pipeline, you need to train the NER model first before running the inference.
 
-### 1. Random Forest
+1. Train the NER model:
+   ```sh
+   python NER.py
+   ```
 
-- Uses the Random Forest algorithm from `sklearn.ensemble.RandomForestClassifier`.
-- Hyperparameters are tuned using `RandomizedSearchCV` or `GridSearchCV`.
+2. Ensure the trained models are available:
+   - NER model: `ner_model/`
+   - Image classification model: `my_model.keras`
 
-### 2. Feed-Forward Neural Network
 
-- A neural network with 3 hidden layers: 300, 100, and 100 neurons.
-- Uses ReLU activation and `categorical_crossentropy` as the loss function.
-- Optimizers can be configured, with SGD used by default.
 
-### 3. Convolutional Neural Network (CNN)
+## Results
 
-- Implements a CNN model using `tensorflow.keras`.
-- Includes convolutional layers, max pooling, and fully connected layers.
-- Uses softmax activation for multi-class classification.
+- The NER model achieves **high accuracy** in extracting animal names.
+- The image classifier correctly classifies **10 animal categories**.
+- The integrated pipeline successfully determines whether the text description matches the image content.
 
-## Model Evaluation
+## Future Improvements
 
-- **Accuracy** is used as the primary metric for model comparison.
-- **Loss** (model error on test data) is also analyzed.
+- Extend the dataset with more animal categories.
+- Improve NER model to handle misspellings and synonyms.
+- Optimize image classifier with a larger dataset and advanced architectures.
+
+
 
 
