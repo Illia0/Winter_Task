@@ -22,7 +22,7 @@ The main goal is to verify whether a given textual description matches the conte
 - **Dataset:**
   - The image dataset contains at least 10 animal classes.
   - The NER model was trained using a dataset containing sentences with animal references.
-- **NER Model:** Transformer-based model (e.g., RoBERTa) trained to recognize animal names in text.
+- **NER Model:** Transformer-based model (e.g., Bert) trained to recognize animal names in text.
 - **Image Classification Model:** CNN-based model trained to classify animals.
 - **Pipeline Script:** A script that integrates both models and provides the final validation output.
 
